@@ -10,8 +10,14 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("BasicGUI");
     }
+
     public void LoadSceneTagAndLayer()
     {
         SceneManager.LoadScene("TagAndLayer");
+    }
+
+    public void LoadSceneSample()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 }
