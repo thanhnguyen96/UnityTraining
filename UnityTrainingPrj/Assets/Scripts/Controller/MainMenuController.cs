@@ -20,4 +20,8 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+    public void LoadScenePhysicsCatapult()
+    {
+        SceneManager.LoadScene("PhysicsCatapult");
+    }
 }

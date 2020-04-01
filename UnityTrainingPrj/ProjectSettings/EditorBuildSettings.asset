@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TagAndLayer.unity
     guid: 66296fa1fd1633443ad89e23c91512ac
+  - enabled: 1
+    path: Assets/Scenes/PhysicsCatapult.unity
+    guid: 227021f8ebc914709baada873b4dc4d6
   m_configObjects: {}
