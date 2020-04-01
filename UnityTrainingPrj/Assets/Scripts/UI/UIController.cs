@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     public FreePlayBoxesUI boxesUI;
     public BasketBallUI ballUIPanel;
     public PhysicsInfoUIPanel physicsUIPanel;
+    public ForceBar forceBar;
 
     public void Reset()
     {
@@ -15,6 +16,7 @@ public class UIController : MonoBehaviour
         boxesUI.Reset();
         targetUI.Reset();
         physicsUIPanel.Reset();
+        forceBar.Reset();
     }
 
     public void HideFreeplayUIPanels()

@@ -178,7 +178,12 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    #region My Define
+    const int MAX_FORCE=750;
+    float lastTimeSpacePressDown;
+    float spacePressTime;
+    float forceAmount=0;
+    #endregion
     #region Physics Formulas
 
     // The Elastic Potential Energy of the Cannonball as a result of the recoiled Catapult Arm 
@@ -286,11 +291,34 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Reset();
+        CurrentPhysicsMode = PhysicsMode.BasketballChallenge;
     }
+    public void UpdateKeyboardEvent()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Reset();
+            lastTimeSpacePressDown = Time.time;
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            spacePressTime = Time.time - lastTimeSpacePressDown;
+            float ratio = 2;
+            forceAmount = Mathf.Repeat(spacePressTime, ratio * 2);//spacePressTime/(timeScale*2)-(int) (spacePressTime/(timeScale*2));
+            forceAmount = (ratio - Mathf.Abs(forceAmount- ratio))/ ratio;
+        }
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            UpdateSpringForce(forceAmount * MAX_FORCE);
 
+            LaunchFreePlayMode();
+        }
+    }
     public void Update()
     {
+        UpdateKeyboardEvent();
         // Update UI
+        uiController.forceBar.setFillAmount(forceAmount);
         if (cannonBall.paused)
         {
             uiController.physicsUIPanel.velocityText.text = (float)Math.Round(cannonBall.currentVelocity.magnitude, 2) + " m/s";
@@ -514,6 +542,14 @@ public class GameManager : MonoBehaviour
     {
         catapult.throwCalled = true;
         activeCoroutine = StartCoroutine(DoProcessFreePlayLaunch());
+    }
+    
+    public void LaunchFreePlayMode()
+    {
+        Reset();
+        catapult.throwCalled = true;
+        UpdateCannonBallMass(1);
+        activeCoroutine = StartCoroutine(DoProcessFreePlayMode());
     }
 
     public void ExecuteLearningStep()
@@ -1119,6 +1155,17 @@ public class GameManager : MonoBehaviour
 
         float velocity = Velocity_At_Time_Of_Launch();
         float ratio = ratio_Of_DEPE_Over_DGPE();
+        catapult.ThrowBall(catapult.launchVector.up, velocity);
+
+        activeCoroutine = null;
+    }
+    public IEnumerator DoProcessFreePlayMode()
+    {
+        CanProcessNextStep = false;
+
+        yield return new WaitWhile(() => { return catapult.throwCalled; });
+
+        float velocity = Velocity_At_Time_Of_Launch();
         catapult.ThrowBall(catapult.launchVector.up, velocity);
 
         activeCoroutine = null;
