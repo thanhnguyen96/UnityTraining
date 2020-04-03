@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PhysicsCatapult.unity
     guid: 227021f8ebc914709baada873b4dc4d6
+  - enabled: 1
+    path: Assets/Scenes/SimpleAnimation.unity
+    guid: 1cab3d7dcbaf0664081f8287af8e2f4a
   m_configObjects: {}
