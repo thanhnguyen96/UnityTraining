@@ -28,4 +28,8 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("SimpleAnimation");
     }
+    public void LoadSceneSoundExample()
+    {
+        SceneManager.LoadScene("SoundExample");
+    }
 }
