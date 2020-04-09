@@ -32,4 +32,8 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("SoundExample");
     }
+    public void LoadSceneTouchExample()
+    {
+        SceneManager.LoadScene("TouchExample");
+    }
 }

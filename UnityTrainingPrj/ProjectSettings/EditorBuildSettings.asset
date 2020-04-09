@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SoundExample.unity
     guid: 8210a65ee53e0b94dbbb6657f6afd6f7
+  - enabled: 1
+    path: Assets/Scenes/TouchExample.unity
+    guid: bb4983d1583ec6e4eb7b7a8e0f48445e
   m_configObjects: {}
