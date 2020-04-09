@@ -7,14 +7,14 @@ public class AudioManager : MonoBehaviour
 {
     public enum AudioStatus
     {
-        READY,
-        PLAYING,
-        PAUSED
+        Ready,
+        Playing,
+        Paused
     }
     public enum AudioType
     {
-        SOUND,
-        MUSIC
+        Sound,
+        Music
     }
     [System.Serializable]
     public struct AudioControl
@@ -62,19 +62,19 @@ public class AudioManager : MonoBehaviour
             {
                 switch (audioControl.audioStatus)
                 {
-                    case AudioStatus.READY:
+                    case AudioStatus.Ready:
                         audioControl.playButton.interactable = true;
                         audioControl.pauseButton.interactable = false;
                         audioControl.stopButton.interactable = false;
                         audioControl.pausedStatusTxt.enabled = false;
                         break;
-                    case AudioStatus.PLAYING:
+                    case AudioStatus.Playing:
                         audioControl.playButton.interactable = false;
                         audioControl.pauseButton.interactable = true;
                         audioControl.stopButton.interactable = true;
                         audioControl.pausedStatusTxt.enabled = false;
                         break;
-                    case AudioStatus.PAUSED:
+                    case AudioStatus.Paused:
                         audioControl.playButton.interactable = true;
                         audioControl.pauseButton.interactable = false;
                         audioControl.stopButton.interactable = false;
@@ -91,10 +91,10 @@ public class AudioManager : MonoBehaviour
         {
             switch (audioControls[i].AudioType)
             {
-                case AudioType.MUSIC:
+                case AudioType.Music:
                     audioControls[i].audioSource.volume = audioControls[i].volumeSlider.value *globalMusicVolumeSlider.value * globalVolumeSlider.value;
                     break;
-                case AudioType.SOUND:
+                case AudioType.Sound:
                     audioControls[i].audioSource.volume = audioControls[i].volumeSlider.value * globalSoundVolumeSlider.value * globalVolumeSlider.value;
                     break;
             }
@@ -103,96 +103,96 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic()
     {
-        if (audioControls[0].audioStatus == AudioStatus.READY)
+        if (audioControls[0].audioStatus == AudioStatus.Ready)
         {
             audioControls[0].audioSource.Play();
         }
-        else if(audioControls[0].audioStatus == AudioStatus.PAUSED)
+        else if(audioControls[0].audioStatus == AudioStatus.Paused)
         {
             audioControls[0].audioSource.UnPause();
         }
-        audioControls[0].audioStatus = AudioStatus.PLAYING;
+        audioControls[0].audioStatus = AudioStatus.Playing;
     }
 
 
     public void PauseMusic()
     {
         audioControls[0].audioSource.Pause();
-        audioControls[0].audioStatus = AudioStatus.PAUSED;
+        audioControls[0].audioStatus = AudioStatus.Paused;
     }
     public void StopMusic()
     {
         audioControls[0].audioSource.Stop();
-        audioControls[0].audioStatus = AudioStatus.READY;
+        audioControls[0].audioStatus = AudioStatus.Ready;
     }
 
     public void PlaySound()
     {
-        if (audioControls[1].audioStatus == AudioStatus.READY)
+        if (audioControls[1].audioStatus == AudioStatus.Ready)
         {
             audioControls[1].audioSource.PlayOneShot(audioControls[1].audioClip);
         }
-        else if (audioControls[1].audioStatus == AudioStatus.PAUSED)
+        else if (audioControls[1].audioStatus == AudioStatus.Paused)
         {
             audioControls[1].audioSource.UnPause();
         }
-        audioControls[1].audioStatus = AudioStatus.PLAYING;
+        audioControls[1].audioStatus = AudioStatus.Playing;
     }
     public void PauseSound()
     {
         audioControls[1].audioSource.Pause();
-        audioControls[1].audioStatus = AudioStatus.PAUSED;
+        audioControls[1].audioStatus = AudioStatus.Paused;
     }
     public void StopSound()
     {
         audioControls[1].audioSource.Stop();
-        audioControls[1].audioStatus = AudioStatus.READY;
+        audioControls[1].audioStatus = AudioStatus.Ready;
     }
 
     public void PlayMusic2()
     {
-        if (audioControls[2].audioStatus == AudioStatus.READY)
+        if (audioControls[2].audioStatus == AudioStatus.Ready)
         {
             audioControls[2].audioSource.Play();
         }
-        else if (audioControls[2].audioStatus == AudioStatus.PAUSED)
+        else if (audioControls[2].audioStatus == AudioStatus.Paused)
         {
             audioControls[2].audioSource.UnPause();
         }
-        audioControls[2].audioStatus = AudioStatus.PLAYING;
+        audioControls[2].audioStatus = AudioStatus.Playing;
     }
 
     public void PauseMusic2()
     {
         audioControls[2].audioSource.Pause();
-        audioControls[2].audioStatus = AudioStatus.PAUSED;
+        audioControls[2].audioStatus = AudioStatus.Paused;
     }
     public void StopMusic2()
     {
         audioControls[2].audioSource.Stop();
-        audioControls[2].audioStatus = AudioStatus.READY;
+        audioControls[2].audioStatus = AudioStatus.Ready;
     }
 
     public void PlaySound2()
     {
-        if (audioControls[3].audioStatus == AudioStatus.READY)
+        if (audioControls[3].audioStatus == AudioStatus.Ready)
         {
             audioControls[3].audioSource.PlayOneShot(audioControls[3].audioClip);
         }
-        else if (audioControls[3].audioStatus == AudioStatus.PAUSED)
+        else if (audioControls[3].audioStatus == AudioStatus.Paused)
         {
             audioControls[3].audioSource.UnPause();
         }
-        audioControls[3].audioStatus = AudioStatus.PLAYING;
+        audioControls[3].audioStatus = AudioStatus.Playing;
     }
     public void PauseSound2()
     {
         audioControls[3].audioSource.Pause();
-        audioControls[3].audioStatus = AudioStatus.PAUSED;
+        audioControls[3].audioStatus = AudioStatus.Paused;
     }
     public void StopSound2()
     {
         audioControls[3].audioSource.Stop();
-        audioControls[3].audioStatus = AudioStatus.READY;
+        audioControls[3].audioStatus = AudioStatus.Ready;
     }
 }
